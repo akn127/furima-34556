@@ -38,12 +38,12 @@
 - belongs_to :user
 - has_one :purchase
 
-## delivery テーブル
+## deliveries テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | purchase_id      | references | null: false, foreign_key: true |
-| postal_cord      | string     | null: false                    |
+| postal_code      | string     | null: false                    |
 | area_id          | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
@@ -54,7 +54,7 @@
 
 - belongs_to :purchase
 
-## purchase テーブル
+## purchases テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
