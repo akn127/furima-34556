@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
       @user.family_name = "tanaka"
       @user.first_name = "二郎"
       @user.valid?
-      expect(@user.errors.full_messages).to include "Family name is invalid"
+      expect(@user.errors.full_messages).to include "Family name Full-width characters"
     end
     it 'ユーザー本名のフリガナは、名字と名前がそれぞれ必須であること' do
       @user.kana_family_name = "タナカ"
@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
       @user.kana_family_name = "ﾀﾅｶ"
       @user.kana_first_name = "ジロウ"
       @user.valid?
-      expect(@user.errors.full_messages).to include "Kana family name is invalid"
+      expect(@user.errors.full_messages).to include "Kana family name Full-width katakana characters"
     end
     it '生年月日が必須であること' do
       @user.birth_date = ""
