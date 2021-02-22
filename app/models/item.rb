@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :status
-  belongs_to :delivery_fee
+  belongs_to :deliveryfee
   belongs_to :area
   belongs_to :days
 
@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     validates :item_text
     validates :category_id
     validates :status_id
-    validates :delivery_fee_id
+    validates :deliveryfee_id
     validates :area_id
     validates :days_id
     validates :price
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
-    validates :delivery_fee_id
+    validates :deliveryfee_id
     validates :area_id
     validates :days_id
   end
