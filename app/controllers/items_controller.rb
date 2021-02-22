@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
   end
 
@@ -6,7 +7,7 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @item = Item.new
     else
-      redirect_to root_path
+      redirect_to action: :index 
     end
   end
 
