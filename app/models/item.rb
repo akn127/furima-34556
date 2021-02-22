@@ -26,5 +26,7 @@ class Item < ApplicationRecord
     validates :days_id
   end
 
+  validates :price, numericality: { only_integer:true, gerater_than:300, less_than:9999999 }
+
   has_one_attached :image
 end
