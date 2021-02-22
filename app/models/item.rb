@@ -25,4 +25,6 @@ class Item < ApplicationRecord
     validates :area_id
     validates :days_id
   end
+
+  has_one_attached :image
 end
