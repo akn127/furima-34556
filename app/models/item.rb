@@ -6,8 +6,10 @@ class Item < ApplicationRecord
   belongs_to :deliveryfee
   belongs_to :area
   belongs_to :days
+  has_one_attached :image
 
   with_options presence: true do
+    validates :image
     validates :item_name
     validates :item_text
     validates :category_id
@@ -26,7 +28,7 @@ class Item < ApplicationRecord
     validates :days_id
   end
 
-  validates :price, numericality: { only_integer:true, gerater_than:300, less_than:9999999 }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to:300, less_than_or_equal_to:9999999 }
+  validates :price, format: { with: /\A[0-9]+\z/, message: "Half-width numbers"}
 
-  has_one_attached :image
 end
