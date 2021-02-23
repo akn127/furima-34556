@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @item = Item.new
     else
-      redirect_to action: :index 
+      redirect_to action: :index
     end
   end
 
@@ -21,8 +21,9 @@ class ItemsController < ApplicationController
   end
 
   private
-  def item_params
-    params.require(:item).permit(:image, :item_name, :item_text, :category_id, :status_id, :deliveryfee_id, :area_id, :days_id, :price).merge(user_id: current_user.id)
-  end
 
+  def item_params
+    params.require(:item).permit(:image, :item_name, :item_text, :category_id, :status_id, :deliveryfee_id, :area_id, :days_id,
+                                 :price).merge(user_id: current_user.id)
+  end
 end
