@@ -4,11 +4,16 @@ RSpec.describe OrderDelivery, type: :model do
   describe '購入情報の入力' do
     before do
       item = FactoryBot.create(:item)
-      @order_delivery = FactoryBot.build(:order_delivery, item_id: item.id)
+      user = FactoryBot.create(:user)
+      @order_delivery = FactoryBot.build(:order_delivery, item_id: item.id, user_id: user.id)
       sleep 0.1
     end
 
     it '配送先の必須事項を全て入力すると購入情報が保存できる' do
+      expect(@order_delivery).to be_valid
+    end
+    it '建物名の情報は空でも保存ができる' do
+      @order_delivery.building_name = ""
       expect(@order_delivery).to be_valid
     end
    
@@ -61,6 +66,16 @@ RSpec.describe OrderDelivery, type: :model do
       @order_delivery.token = nil
       @order_delivery.valid?
       expect(@order_delivery.errors.full_messages).to include("Token can't be blank")
+    end
+    it 'item_idがないと登録できないこと' do
+      @order_delivery.item_id = nil
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include("Item can't be blank")
+    end
+    it 'user_idがないと登録できないこと' do
+      @order_delivery.user_id = nil
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include("User can't be blank")
     end
   end
 end
