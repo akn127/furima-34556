@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    @order = Order.new
     @order_delivery = OrderDelivery.new
   end
 
