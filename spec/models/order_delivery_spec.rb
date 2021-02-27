@@ -1,11 +1,11 @@
 require 'rails_helper'
-#bundle exec rspec spec/models/order_delivery_spec.rb
 
 RSpec.describe OrderDelivery, type: :model do
   describe '購入情報の入力' do
     before do
       item = FactoryBot.create(:item)
       @order_delivery = FactoryBot.build(:order_delivery, item_id: item.id)
+      sleep 0.1
     end
 
     it '配送先の必須事項を全て入力すると購入情報が保存できる' do
